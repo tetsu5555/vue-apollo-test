@@ -1,4 +1,8 @@
-# vue-apollo
+# vue-apollo-test
+
+for testing vue-apollo to use in the project
+
+![スクショ](./ss.png)
 
 ## Project setup
 ```
