@@ -11,6 +11,7 @@ const client = new ApolloClient({
   request: operation => {
     operation.setContext({
       headers: {
+        // TODO: use dotenv
         authorization: 'Bearer '+ '<github token>'
       },
     });
