@@ -5,6 +5,8 @@
 npm install
 ```
 
+add github token
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
