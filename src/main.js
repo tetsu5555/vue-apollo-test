@@ -7,11 +7,11 @@ Vue.use(VueApollo);
 
 //creating apollo client
 const client = new ApolloClient({
-  uri: "http://localhost:3000/api/graphql",
+  uri: "https://api.github.com/graphql",
   request: operation => {
     operation.setContext({
       headers: {
-        authorization: 'Bearer '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM4Njc5NjMsInN1YiI6IjEwMDAifQ.MHj9Wv4NO5V6G3gFzfla03UwnsFnitlm6ABz2I8u2FY'
+        authorization: 'Bearer '+ '<github token>'
       },
     });
   }
