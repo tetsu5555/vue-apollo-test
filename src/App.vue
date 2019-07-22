@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div v-if="$apollo.loading">Loading..</div>
+    <div v-else>
+      <h1>Name: {{ user.name}}</h1>
+      <p>Email: {{viewer.email }}</p>
+      <!-- <div v-for="repository in repositories.nodes" :key="repository.id">
+        <div>repository.name</div>
+      </div> -->
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { gql } from "apollo-boost";
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  data: function() {
+    return {
+        //query data is added
+      viewer: {},
+      user: {}
+    };
+  },
+  apollo: {
+      //this query will update the `viewer` data property
+    user: {
+      query: gql`
+        {
+          user(userID: "id_1009"){
+            name
+            userProfiles {
+              email
+              name
+              avatar
+              profile
+            }
+            followersCount
+          }
+        }`
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+    }
+  }
+};
+</script>
